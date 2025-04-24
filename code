@@ -1,0 +1,154 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+
+export default function Home() {
+  const [language, setLanguage] = useState("bm");
+  const t = {
+    bm: {
+      tagline: "Transformasi Landskap Impian Anda",
+      subtagline: "Dengan Sentuhan Al.Design – Estetika & Fungsi Dalam Satu",
+      getQuote: "Dapatkan Sebut Harga Percuma",
+      about: "Kami pakar dalam reka bentuk, pembinaan dan penyelenggaraan landskap kediaman & komersial. Gabungan estetika dan fungsi jadi keutamaan kami.",
+      services: "Servis Kami",
+      design: "Reka Bentuk Landskap",
+      build: "Pembinaan Landskap",
+      maintain: "Penyelenggaraan Landskap",
+      designDesc: "Pelan 2D & 3D yang kreatif dan praktikal mengikut bajet anda.",
+      buildDesc: "Rumput, kolam, laluan, pergola dan elemen hiasan lain.",
+      maintainDesc: "Penjagaan taman berkala: potong rumput, baja, rawat tanaman.",
+      gallery: "Galeri Projek",
+      testimonial: "Testimoni Pelanggan",
+      sampleTestimonial: "Kerja sangat kemas dan kreatif! Taman rumah saya nampak macam resort.",
+      contact: "Hubungi Kami",
+      name: "Nama Penuh",
+      phone: "Nombor Telefon",
+      email: "Emel",
+      message: "Lokasi Projek / Pertanyaan",
+      submit: "Hantar"
+    },
+    en: {
+      tagline: "Transform Your Dream Landscape",
+      subtagline: "With Al.Design's Touch – Where Aesthetics Meets Function",
+      getQuote: "Get Free Quotation",
+      about: "We specialize in landscape design, construction and maintenance for residential & commercial spaces. We combine beauty with purpose.",
+      services: "Our Services",
+      design: "Landscape Design",
+      build: "Landscape Construction",
+      maintain: "Landscape Maintenance",
+      designDesc: "Creative 2D & 3D planning tailored to your budget.",
+      buildDesc: "Grass, ponds, walkways, pergolas, and decorative features.",
+      maintainDesc: "Scheduled garden care: mowing, fertilizing, plant treatment.",
+      gallery: "Project Gallery",
+      testimonial: "Client Testimonials",
+      sampleTestimonial: "Very neat and creative work! My home garden looks like a resort.",
+      contact: "Contact Us",
+      name: "Full Name",
+      phone: "Phone Number",
+      email: "Email",
+      message: "Project Location / Inquiry",
+      submit: "Submit"
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-gray-800">
+      {/* Header */}
+      <header className="p-4 flex justify-between items-center shadow">
+        <h1 className="text-2xl font-bold">Al.Design</h1>
+        <nav className="space-x-4">
+          <button onClick={() => setLanguage(language === "bm" ? "en" : "bm")} className="underline">
+            {language === "bm" ? "English" : "BM"}
+          </button>
+          <a href="#services" className="hover:underline">{t[language].services}</a>
+          <a href="#gallery" className="hover:underline">{t[language].gallery}</a>
+          <a href="#testimonials" className="hover:underline">{t[language].testimonial}</a>
+          <a href="#contact" className="hover:underline">{t[language].contact}</a>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="text-center py-20 bg-green-100">
+        <h2 className="text-4xl font-bold mb-4">{t[language].tagline}</h2>
+        <p className="mb-6 text-lg">{t[language].subtagline}</p>
+        <Button>{t[language].getQuote}</Button>
+      </section>
+
+      {/* Tentang Kami */}
+      <section className="p-10 max-w-4xl mx-auto text-center">
+        <h3 className="text-2xl font-semibold mb-4">Al.Design</h3>
+        <p>{t[language].about}</p>
+      </section>
+
+      {/* Servis Kami */}
+      <section id="services" className="p-10 bg-gray-50">
+        <h3 className="text-2xl font-semibold text-center mb-6">{t[language].services}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <Card>
+            <CardContent className="p-4">
+              <h4 className="font-bold mb-2">{t[language].design}</h4>
+              <p>{t[language].designDesc}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h4 className="font-bold mb-2">{t[language].build}</h4>
+              <p>{t[language].buildDesc}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h4 className="font-bold mb-2">{t[language].maintain}</h4>
+              <p>{t[language].maintainDesc}</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Galeri */}
+      <section id="gallery" className="p-10 max-w-6xl mx-auto">
+        <h3 className="text-2xl font-semibold text-center mb-6">{t[language].gallery}</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="bg-gray-200 h-40 rounded-lg"></div>
+          <div className="bg-gray-200 h-40 rounded-lg"></div>
+          <div className="bg-gray-200 h-40 rounded-lg"></div>
+        </div>
+      </section>
+
+      {/* Testimoni */}
+      <section id="testimonials" className="p-10 bg-gray-50">
+        <h3 className="text-2xl font-semibold text-center mb-6">{t[language].testimonial}</h3>
+        <p className="text-center max-w-xl mx-auto">“{t[language].sampleTestimonial}” – Puan Zana, Bangi</p>
+      </section>
+
+      {/* Hubungi Kami */}
+      <section id="contact" className="p-10 max-w-2xl mx-auto">
+        <h3 className="text-2xl font-semibold text-center mb-6">{t[language].contact}</h3>
+        <form className="space-y-4">
+          <Input placeholder={t[language].name} />
+          <Input placeholder={t[language].phone} />
+          <Input placeholder={t[language].email} />
+          <Input placeholder={t[language].message} />
+          <Button type="submit">{t[language].submit}</Button>
+        </form>
+      </section>
+
+      {/* WhatsApp Button */}
+      <div className="fixed bottom-6 right-6">
+        <a
+          href="https://wa.me/60194113891"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-600"
+        >
+          WhatsApp Kami
+        </a>
+      </div>
+
+      <footer className="text-center py-6 text-sm text-gray-500">
+        © 2025 Al.Design. Semua Hak Terpelihara.
+      </footer>
+    </div>
+  );
+}
